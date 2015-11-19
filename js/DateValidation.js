@@ -34,27 +34,33 @@
 	            targetElPlaceHolder = $(thisEl).attr(opts.attribute);
 	            targetEl = $(thisEl).val();
 	            var self = thisEl;
-	            /*var result = {};
-	            result.instance = self;
-	            result.opts = opts;*/
 	            splitNmap(opts);
-	            transformedDate = new Date(year, month, date);
+	           	transformedDate = new Date(year, month, date);
 	            $.DateValidation.init(thisEl, opts);
 	        };
 
-	        $.DateValidation = {
-	        	result :{},
+	        $.extend($.DateValidation, {
+	            result: {},
 	            defaults: {
 	                'splitter': '-',
 	                'attribute': 'placeholder',
-	                'beginYear': 1947,
-	                'chkExceedsToday':false,
+	                'beginYear': 0,
+	                'endYear': -1,
+	                'chkExceedsToday': false,
 	                'difference': [0, 0, 0], // year, month, date
 	                'cssForValidDate': 'validDate',
 	                'cssForInvalidDate': 'invalidDate'
 	            },
+	            errorMessage: {
+	                'calenderDate': ' You have Entered the Date which is not available in Calender ',
+	                'leapYear': ' The year you have chosen is not a Leap Year ',
+	                'beginYear': ' The Date you entered is lesser than Begin Year ',
+	                'endYear': ' The Date you entered is greater than End Year ',
+	                'exceedsToday': '  The Date you entered exceeds today ',
+	                'finallyOnCondition': ' The Date Entered is invalid based on the configuration '
+	            },
 	            init: function(self, opts) {
-	            	this.result = {};
+	                this.result = {};
 	                if ($.DateValidation.isValidDate(self, opts)) {
 	                    $.DateValidation.validateInputDate(self, opts);
 	                }
@@ -62,35 +68,48 @@
 	            isLeapYear: function(inputDate) {
 	                var year = inputDate.getFullYear();
 	                var isValid = ((year % 4 == 0) && (year % 100 != 0)) || (year % 400 == 0);
-	                this.result.isLeapYear = isValid;
+	                //this.result.leapYear = isValid;
 	                return isValid;
 	            },
 	            isValidDate: function(self, opts) {
 	                var isValid = false;
-	                if (y_m_d_Date[0] >= opts.beginYear) {
+	                if (y_m_d_Date[0] >= opts.beginYear && (opts.endYear > -1 ? y_m_d_Date[0] <= opts.endYear : true)) {
 	                    var inputDate = new Date(y_m_d_Date[0], y_m_d_Date[1], y_m_d_Date[2]),
 	                        febInLeapYear = ($.DateValidation.isLeapYear(inputDate) && y_m_d_Date[1] == 1 && y_m_d_Date[2] <= daysInMonth[y_m_d_Date[1]] + 1),
 	                        daysInOtherMonths = y_m_d_Date[2] <= daysInMonth[y_m_d_Date[1]] && y_m_d_Date[1] != 1,
 	                        febInNonLeapYear = (!$.DateValidation.isLeapYear(inputDate) && y_m_d_Date[1] == 1 && y_m_d_Date[2] <= daysInMonth[y_m_d_Date[1]]),
 	                        chkValidMonth = ((y_m_d_Date[1] == 1) ? ((febInLeapYear || febInNonLeapYear) && y_m_d_Date[1] < daysInMonth.length) : y_m_d_Date[1] < daysInMonth.length),
 	                        isValid = (y_m_d_Date[1] != 1) ? (chkValidMonth && daysInOtherMonths) : chkValidMonth;
-	                    console.log("whether Input Date is Valid", isValid);
-	                    this.result.validBeginYear = true;
-	                } else {
-	                    this.result.validBeginYear = false;
-
-	                    console.log("whether Input Date is invalid as it is lesser than base limit Year ", opts.beginYear);
+	                    //console.log("whether Input Date is Valid", isValid);
+	                    this.result.beginYear = true;
+	                    this.result.endYear = true;
+	                } else if (y_m_d_Date[0] >= opts.beginYear && !(opts.endYear > -1 ? y_m_d_Date[0] <= opts.endYear : true)) {
+	                    this.result.beginYear = true;
+	                    this.result.endYear = false;
+	                } else if (!(y_m_d_Date[0] >= opts.beginYear) && (opts.endYear > -1 ? y_m_d_Date[0] <= opts.endYear : true)) {
+	                    this.result.beginYear = false;
+	                    this.result.endYear = true;
+	                } else if (!(y_m_d_Date[0] >= opts.beginYear) && (opts.endYear > -1 ? y_m_d_Date[0] <= opts.endYear : true)) {
+	                    this.result.beginYear = false;
+	                    this.result.endYear = false;
+	                    // console.log("whether Input Date is invalid as it is lesser than base limit Year ", opts.beginYear);
 	                }
+
+	                // //console.log("whether Input Date is invalid as it is lesser than base limit Year ", opts.beginYear, " (",this.result.beginYear,") ", opts.endYear, " (",this.result.endYear,") ");
 	                $.DateValidation.setStyleAfterValidation(self, opts, isValid);
-	                if(this.result.validBeginYear)
-	                this.result.isValidCalenderDate = isValid;
+
+	                if (this.result.beginYear && this.result.endYear)
+	                    this.result.calenderDate = isValid;
+	                else
+	                    this.result.finallyOnCondition = isValid;
+
 	                return isValid;
 	            },
 	            isNotExceedNow: function(inputDate) {
 	                var today = new Date(),
 	                    isValid = (inputDate <= today);
-	                console.log("whether Input Date not exceeds Today", isValid);
-	                this.result.isNotExceedNow = isValid;
+	                // //console.log("whether Input Date not exceeds Today", isValid);
+	                this.result.exceedsToday = isValid;
 	                return isValid;
 	            },
 	            isDiffFromNowMatched: function(year, month, date) {
@@ -105,11 +124,11 @@
 	                    diffInDate = today.getDate() - date,
 	                    differencedDate = new Date(diffInYear, diffInMonth, diffInDate)
 	                if (differencedDate > originalDate) {
-	                    console.log("The Date Difference ", differencedDate, " ... ", originalDate, " success ");
+	                    //console.log("The Date Difference ", differencedDate, " ... ", originalDate, " success ");
 	                    isValid = true;
 	                    return isValid;
 	                }
-	                console.log("The Date Difference ", differencedDate, " ... ", originalDate, " Failed ");
+	                // //console.log("The Date Difference ", differencedDate, " ... ", originalDate, " Failed ");
 	                isValid = false;
 	                this.result.isDiffFromNowMatched = isValid;
 	                return isValid;
@@ -118,24 +137,38 @@
 	                var inputDate = new Date(y_m_d_Date[0], y_m_d_Date[1], y_m_d_Date[2]),
 	                    isValid = (opts.chkExceedsToday ? $.DateValidation.isNotExceedNow(inputDate) : true) && $.DateValidation.isDiffFromNowMatched(opts.difference[0], opts.difference[1], opts.difference[2]);
 	                $.DateValidation.setStyleAfterValidation(self, opts, isValid);
-	                console.log("Result of Input Date Validation", isValid);
-	                this.result.validatedInputDate = isValid;
+	                // //console.log("Result of Input Date Validation", isValid);
+	                this.result.finallyOnCondition = isValid;
 	                return isValid;
 	            },
 	            setStyleAfterValidation: function(self, opts, isValid) {
 	                $(self).removeClass(opts.cssForValidDate + ' ' + opts.cssForInvalidDate);
 	                $(self).addClass(isValid ? opts.cssForValidDate : opts.cssForInvalidDate);
 	            }
-	        }
+	        });
 
 	        $(this).each(function(indx, elem) {
-	            var opts = $.extend({}, $.DateValidation.defaults, options);
+	            // var opts = $.extend({}, $.DateValidation.defaults, options), printErr = false, errMsg = "", displayMsg = "";
+	            var opts = $.extend({}, $.DateValidation.defaults, options),
+	                printErr = false,
+	                errMsg = "",
+	                displayMsg = "";
 	            initConfig(this, opts);
 	            $.DateValidation.result.instance = this;
 	            $.DateValidation.result.opts = opts;
-	            console.log("PC Date Validation Results", $.DateValidation.result);
-	            return $.DateValidation.result;
-	            console.log('----------------');
+	            // //console.log("PC Date Validation Results", $.DateValidation.result);
+	            // //console.log('----------------');
+	            errMsg = "";
+	            $(this).parent().find('.errMsgDV').remove();
+	            for (var err in $.DateValidation.result) {
+	                if (!$.DateValidation.result[err]) {
+	                    displayMsg = (typeof opts.errorMessage[err] != "undefined") ? opts.errorMessage[err] : 'No errorMessage';
+	                    errMsg = "<div class='errMsgDV'>" + displayMsg + "</div>";
+	                    // //console.log(errMsg);
+	                    $(this).parent().append(errMsg);
+	                }
+	            }
 	        });
 	    };
+	    $.DateValidation = {};
 	})(jQuery, undefined);
