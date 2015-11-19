@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <title>
+        Date Validation
+    </title>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0 maximum-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="css/vendor/bootstrap.css">
+    <link rel="stylesheet" type="text/css" id = "theme" href="css/vendor/bootstrap-theme-1.css">
+    <link rel="stylesheet" type="text/css" href="css/styles.css">
+
+</head>
+
+<body>
+    
+    <!-- bootstrap Begins -->
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">Date Validation</a>
+            </div>
+            <div id="navbar" class="navbar-collapse collapse">
+                <ul class="nav navbar-nav f-right">
+                    <li class="active"><a href="#">PlayGround</a></li>
+                    <li><a href="./Docs.html">Docs</a></li>
+                    <li><a href="./contribution.html">Contribution</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    
+    <br/>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="page-header">
+                    <h1>Date Validation <small>PlayGround</small></h1>
+                </div>
+
+                <div class="wrapper flex">
+                    <!-- <h4>Console Displays Appropriate Results and Messages</h4> -->
+                    <br/><br/>
+                    
+                    <!-- 1. col-lg-4 Begins -->
+                    <div class="col-lg-4 mar-bot-20 pad-top-20 border">
+
+                    <pre class="code config">
+$('input.type1').DateValidation({
+    'beginYear': 1957,
+    'endYear':2015,
+    'chkExceedsToday':false,
+    'attribute':'data-dv',
+    'splitter':'.',
+    'cssForValidDate':'pc-valid-date',
+    'cssForInvalidDate':'pc-invalid-date'
+});
+                        </pre>
+                        <br/><br/>
+
+                    <p class = "date-fmt align-center">DD.MM.YYYY</p>
+
+                        
+                        <div class="input-group align-center-margin">
+                          <input type = "text" class="form-control type1" placeholder="dd.mm.yyyy" data-dv="dd.mm.yyyy" value = "2.2.1900"/>
+                          <!-- <span class= "indicator"></span> -->
+                        </div>
+
+                        <br/>
+
+                        <div class="input-group align-center-margin">
+                          <input type = "text" class="form-control type1" placeholder="dd.mm.yyyy" data-dv="dd.mm.yyyy" value = "30.1.2014"/>
+                          <!-- <span class= "indicator"></span> -->
+                        </div>
+
+                        <br/>
+
+                        <div class="input-group align-center-margin">
+                          <input type = "text" class="form-control type1" placeholder="dd.mm.yyyy" data-dv="dd.mm.yyyy" value = "30.3.2014"/>
+                          <!-- <span class= "indicator"></span> -->
+                        </div>
+
+                        <br/>
+
+                        <div class="input-group align-center-margin">
+                        <button type="button" class="shadow-effect btn btn-default align-center-margin" onclick = "DateValidationConfig('type1')">Click to Validate Date</button>
+                        </div>
+                        <br/><br/>
+
+                    </div>
+
+                    <!-- 1. col-lg-4 Ends-->
+
+                    <!-- 2. col-lg-4 Begins -->
+
+                    <div class="col-lg-4 mar-bot-20 pad-top-20 border">
+                        
+                        <pre class="code config">
+$('input.type2').DateValidation({
+    //'beginYear': 1957,
+    //'difference': [0, 10, 0],
+    'chkExceedsToday':true,
+    'attribute':'data-dv',
+    'splitter':'/',
+    'cssForValidDate':'pc-valid-date',
+    'cssForInvalidDate':'pc-invalid-date'
+});
+                        </pre>
+                        <br/><br/>
+
+                        <p class = "date-fmt align-center">YYYY/DD/MM</p>
+                        
+
+                        <div class="input-group align-center-margin">
+                          <input type = "text" class="form-control type2" placeholder="yyyy/dd/mm" data-dv="yyyy/dd/mm" value = "1940/2/2"/>
+                          <!-- <span class= "indicator"></span> -->
+                        </div>
+
+                        <br/>
+
+                        <div class="input-group align-center-margin">
+                          <input type = "text" class="form-control type2" placeholder="yyyy/dd/mm" data-dv="yyyy/dd/mm" value = "2018/30/1"/>
+                          <!-- <span class= "indicator"></span> -->
+                        </div>
+
+                        <br/>
+
+                        <div class="input-group align-center-margin">
+                          <input type = "text" class="form-control type2" placeholder="yyyy/dd/mm" data-dv="yyyy/dd/mm" value = "2012/30/2"/>
+                          <!-- <span class= "indicator"></span> -->
+                        </div>
+
+                        <br/>
+
+                        <div class="input-group align-center-margin">
+                        <button type="button" class="shadow-effect btn btn-default align-center-margin" onclick = "DateValidationConfig('type2')">Click to Validate Date</button>
+                        </div>
+                        <br/><br/>
+
+                    </div>
+
+                    <!--2. col-lg-4 Ends -->
+
+                    <!-- 3. col-lg-4 Begins -->
+
+                    <div class="col-lg-4 mar-bot-20 pad-top-20 border">
+
+                    <pre class="code config">
+$('input.type3').DateValidation({
+    'beginYear': 1957,
+    'difference': [0, 10, 0],
+    'chkExceedsToday':true,
+    'attribute':'placeholder',
+    'splitter':'-',
+    'cssForValidDate':'pc-valid-date',
+    'cssForInvalidDate':'pc-invalid-date'
+});
+                        </pre>
+                        <br/><br/>
+
+                    <p class = "date-fmt align-center">YYYY-MM-DD</p>
+
+                        
+
+                        <div class="input-group align-center-margin">
+                          <input type = "text" class="form-control type3" placeholder="yyyy-mm-dd" value = "1900-2-2"/>
+                          <!-- <span class= "indicator"></span> -->
+                        </div>
+
+                        <br/>
+
+                        <div class="input-group align-center-margin">
+                          <input type = "text" class="form-control type3" placeholder="yyyy-mm-dd" value = "2014-1-30"/>
+                          <!-- <span class= "indicator"></span> -->
+                        </div>
+
+                        <br/>
+
+                        <div class="input-group align-center-margin">
+                          <input type = "text" class="form-control type3" placeholder="yyyy-mm-dd" value = "2014-3-30"/>
+                          <!-- <span class= "indicator"></span> -->
+                        </div>
+
+                        <br/>
+
+                        <div class="input-group align-center-margin">
+                        <button type="button" class="shadow-effect btn btn-default align-center-margin" onclick = "DateValidationConfig('type3')">Click to Validate Date</button>
+                        </div>
+                        <br/><br/>
+
+                    </div>
+
+                    <!-- 3. col-lg-4  Ends -->
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- bootstrap Ends -->
+
+    <script type="text/javascript" src="js/vendor/jquery-1.11.3.js"></script>
+    <script type="text/javascript" src="js/vendor/bootstrap.js"></script>
+    <script type="text/javascript" src="js/DateValidation.min.js"></script>
+    <script type="text/javascript" src="js/script.js"></script>
+
+</body>
+
+</html>

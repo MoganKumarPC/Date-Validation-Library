@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <title>
+        Date Validation
+    </title>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0 maximum-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="css/vendor/bootstrap.css">
+    <link rel="stylesheet" type="text/css" id = "theme" href="css/vendor/bootstrap-theme-1.css">
+    <link rel="stylesheet" type="text/css" href="css/styles.css">
+</head>
+
+<body>
+    <!-- bootstrap Begins -->
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">Date Validation</a>
+            </div>
+            <div id="navbar" class="navbar-collapse collapse">
+                <ul class="nav navbar-nav f-right">
+                    <li><a href="./index.html">PlayGround</a></li>
+                    <li class="active"><a href="#">Docs</a></li>
+                    <li><a href="./contribution.html">Contribution</a></li>
+                    
+                    
+                </ul>
+            </div>
+        </div>
+    </nav>
+    
+    <br/>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="page-header">
+                    <h1>Date Validation <small>Documentation For use</small></h1>
+                </div>
+
+                <div class="panel panel-info">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Default Options:</h3>
+                    </div>
+                    <div class="panel-body">
+                        <p>splitter: <span class="badge">"-"</span></p>
+                        <p>attribute: <span class="badge">"placeholder"</span></p>
+                        <p>beginYear: <span class="badge">1947</span></p>
+                        <p>endYear: <span class="badge">-1</span></p>
+                        <p>chkExceedsToday: <span class="badge">false</span></p>
+                        <p>difference: <span class="badge">[0, 0, 0], // year, month, date</span></p>
+                        <p>cssForValidDate: <span class="badge">"validDate"</span></p>
+                        <p>cssForInvalidDate: <span class="badge">"invalidDate"</span></p>
+                    </div>
+                </div>
+
+                <div class="panel panel-success">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Configuration Option Usage &nbsp; <span class="badge">splitter</span></h3>
+                    </div>
+                    <div class="panel-body">
+                        <span class="badge">splitter </span> is the option to supply the symbol to split the date, month, year.
+                    </div>
+                </div>
+
+                <div class="panel panel-info">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Configuration Option Usage &nbsp; <span class="badge">attribute</span></h3>
+                    </div>
+                    <div class="panel-body">
+                        <span class="badge">attribute</span> is the option to  read which attribute to get the date format.
+                    </div>
+                </div>
+
+                <div class="panel panel-success">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Configuration Option Usage &nbsp; <span class="badge">beginYear</span></h3>
+                    </div>
+                    <div class="panel-body">
+                        <span class="badge">beginYear</span> is the option to inform the library whether the input year is from begin year.
+                    </div>
+                </div>
+
+                <div class="panel panel-info">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Configuration Option Usage &nbsp; <span class="badge">endYear</span></h3>
+                    </div>
+                    <div class="panel-body">
+                        <span class="badge">endYear</span> is the option to inform the library whether the input year is with in end year.
+                    </div>
+                </div>
+                
+                <div class="panel panel-success">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Configuration Option Usage &nbsp; <span class="badge">chkExceedsToday</span></h3>
+                    </div>
+                    <div class="panel-body">
+                        <span class="badge">chkExceedsToday</span> is the option to inform the library whether the input date exceeds today or not.
+                    </div>
+                </div>
+
+                <div class="panel panel-info">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Configuration Option Usage &nbsp; <span class="badge">difference</span></h3>
+                    </div>
+                    <div class="panel-body">
+                        <span class="badge">difference</span> is the option to inform the library to check whether the input date is valid with the difference from today.
+                    </div>
+                </div>
+
+                <div class="panel panel-success">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Configuration Option Usage &nbsp; <span class="badge">cssForValidDate</span></h3>
+                    </div>
+                    <div class="panel-body">
+                        <span class="badge">cssForValidDate</span> is the  option to provide the CSS classes to set for any valid dates.
+                    </div>
+                </div>
+
+                <div class="panel panel-info">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Configuration Option Usage &nbsp; <span class="badge">cssForInvalidDate</span></h3>
+                    </div>
+                    <div class="panel-body">
+                        <span class="badge">cssForInvalidDate</span> is the  option to provide the CSS classes to set for any invalid dates.
+                    </div>
+                </div>
+
+                
+                <div class="panel panel-success">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Global Methods &nbsp; <span class="badge">init</span></h3>
+                    </div>
+                    <div class="panel-body">
+                        <p>$.DateValidation &nbsp; <span class="badge">init</span></p>
+                        <ul>
+                        <li> Initializes the DateValidation library. </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="panel panel-info">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Global Methods &nbsp; <span class="badge">isLeapYear</span></h3>
+                    </div>
+                    <div class="panel-body">
+                        <p>$.DateValidation &nbsp; <span class="badge">isLeapYear</span></p>
+                        <ul>
+                        <li> Validates whether the input is valid leap year. </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="panel panel-success">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Global Methods &nbsp; <span class="badge">isValidDate</span></h3>
+                    </div>
+                    <div class="panel-body">
+                        <p>$.DateValidation &nbsp; <span class="badge">isValidDate</span></p>
+                        <ul>
+                        <li> Validates whether the input is valid calender date. </li>
+                        </ul>
+                    </div>
+                </div>
+
+
+                <div class="panel panel-info">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Global Methods &nbsp; <span class="badge">isNotExceedNow</span></h3>
+                    </div>
+                    <div class="panel-body">
+                        <p>$.DateValidation &nbsp; <span class="badge">isNotExceedNow</span></p>
+                        <ul>
+                        <li> validates whether the input date exceeds today</li>
+                        </ul>
+                    </div>
+                </div>
+
+
+                <div class="panel panel-success">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Global Methods &nbsp; <span class="badge">isDiffFromNowMatched</span></h3>
+                    </div>
+                    <div class="panel-body">
+                        <p>$.DateValidation &nbsp; <span class="badge">isDiffFromNowMatched</span></p>
+                        <ul>
+                        <li> Validates by comparing the difference between the input date and the supplied array [yyyy, mm, dd]. </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="panel panel-info">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Global Methods &nbsp; <span class="badge">validateInputDate</span></h3>
+                    </div>
+                    <div class="panel-body">
+                        <p>$.DateValidation &nbsp; <span class="badge">validateInputDate</span></p>
+                        <ul>
+                        <li> Validates the input date based on the configuration options </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="panel panel-success">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Global Methods &nbsp; <span class="badge">setStyleAfterValidation</span></h3>
+                    </div>
+                    <div class="panel-body">
+                        <p>$.DateValidation &nbsp; <span class="badge">setStyleAfterValidation</span></p>
+                        <ul>
+                        <li> A supplied CSS class is added for any validated dates (valid or invalid). </li>
+                        </ul>
+                        
+                    </div>
+                </div>
+
+                <div class="panel panel-success">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Global Methods &nbsp; <span class="badge">errorMessage</span> &nbsp; </h3>
+                    </div>
+                    <div class="panel-body">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h3 class="panel-title">Invalid Calender Date &nbsp; <span class="badge">errorMessage.calenderDate</span></h3>
+                            </div>
+                            <div class="panel-body"> 
+                            <ul>
+                            <li><span class="badge">Default Message: (also customizable)</span> &nbsp; You have Entered the Date which is not available in Calender</li>
+                            </ul>
+                            </div>
+                        </div>
+
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h3 class="panel-title"> If the year is not leap year &nbsp; <span class="badge">errorMessage.leapYear</span></h3>
+                            </div>
+                            <div class="panel-body">
+                            <ul>
+                            <li><span class="badge">Default Message: (also customizable)</span> &nbsp; The year you have chosen is not a Leap Year</li>
+                            </ul>
+                            </div>
+                        </div>
+
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h3 class="panel-title">If begin year not within the specified limit &nbsp; <span class="badge">errorMessage.beginYear</span></h3>
+                            </div>
+                            <div class="panel-body">
+                            <ul>
+                            <li><span class="badge">Default Message: (also customizable)</span> &nbsp; The Date you entered is lesser than Begin Year</li>
+                            </ul>
+                            </div>
+                        </div>
+
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h3 class="panel-title">If end year exceeds the specified limit &nbsp; <span class="badge">errorMessage.endYear</span></h3>
+                            </div>
+                            <div class="panel-body">
+                            <ul>
+                            <li><span class="badge">Default Message: (also customizable)</span> &nbsp; The Date you entered is greater than End Year</li>
+                            </ul>
+                            </div>
+                        </div>
+
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h3 class="panel-title">If the date exceeds today &nbsp; <span class="badge">errorMessage.exceedsToday</span></h3>
+                            </div>
+                            <div class="panel-body">
+                            <ul>
+                            <li><span class="badge">Default Message: (also customizable)</span> &nbsp; The Date you entered exceeds today</li>
+                            </ul>
+                            </div>
+                        </div>
+                        
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h3 class="panel-title">Final validation of complete configuration &nbsp; <span class="badge">errorMessage.finallyOnCondition</span></h3>
+                            </div>
+                            <div class="panel-body">
+                            <ul>
+                            <li><span class="badge">Default Message: (also customizable)</span> &nbsp; The Date Entered is invalid based on the configuration</li>
+                            </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="panel panel-info">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Useful Information &nbsp;</h3>
+                    </div>
+                    <div class="panel-body">
+                        <ul class = "center-cntnr txt-align-cntr">
+                            <li class = "i-blk txt-align-cntr">
+                            <p>For any Issues found while using this library: </p>
+                            <p class = "txt-align-cntr"><strong>comment</strong></p> 
+                            <p class = "txt-align-cntr">@ </p> 
+                            <p class = "txt-align-cntr"><a href = "https://github.com/MoganKumarPC"><strong>https://github.com/MoganKumarPC</strong></a></p> </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- bootstrap Ends -->
+
+
+</body>
+<script type="text/javascript" src="js/vendor/jquery-1.11.3.js"></script>
+<script type="text/javascript" src="js/vendor/bootstrap.js"></script>
+<script type="text/javascript" src="js/DateValidation.min.js"></script>
+<script type="text/javascript" src="js/script.js"></script>
+
+</html>
